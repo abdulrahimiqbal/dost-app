@@ -1,0 +1,23 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="Conversations" class="bg-purple-600 text-black" flat="true">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+        <ActionItem tap="{{ onHomeNav }}" ios.position="right" android.position="actionBar">
+            <Label text="Home" class="text-black p-2" />
+        </ActionItem>
+    </ActionBar>
+    
+    <StackLayout class="p-4">
+        <ListView items="{{ conversations }}" class="list-group">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto,*" rows="auto,auto" class="p-2 border-b border-gray-200">
+                    <Image col="0" rowSpan="2" src="{{ dostAvatarUrl }}" 
+                           class="w-12 h-12 rounded-full mr-4" stretch="aspectFill" />
+                    <Label col="1" row="0" text="{{ dostName }}" 
+                           class="text-lg font-semibold text-black" />
+                    <Label col="1" row="1" text="{{ lastMessage }}" 
+                           class="text-sm text-black" textWrap="true" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
+</Page>

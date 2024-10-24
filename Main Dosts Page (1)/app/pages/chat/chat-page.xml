@@ -1,0 +1,38 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar class="action-bar">
+        <GridLayout columns="auto, auto, *">
+            <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+            <Image col="1" src="{{ currentDost.avatar }}" class="w-10 h-10 rounded-full m-2" />
+            <Label col="2" text="{{ currentDost.name }}" class="text-black font-bold text-lg m-2" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="*, auto, auto">
+        <ListView row="0" items="{{ messages }}" separatorColor="transparent">
+            <ListView.itemTemplate>
+                <GridLayout class="p-2">
+                    <StackLayout class="{{ isUser ? 'ml-auto bg-purple-200' : 'mr-auto bg-white' }} rounded-lg p-3 w-3/4">
+                        <Label text="{{ content }}" textWrap="true" class="text-black" />
+                        <Label text="{{ timestamp }}" class="text-xs text-gray-500" />
+                        <GridLayout columns="auto,*" visibility="{{ isVoiceNote ? 'visible' : 'collapsed' }}">
+                            <Button col="0" text="{{ isPlaying ? '⏸️' : '▶️' }}" 
+                                    tap="{{ $parent.onPlayVoiceNote }}"
+                                    class="btn w-8 h-8" />
+                            <Progress col="1" value="{{ playbackProgress }}" class="m-2" />
+                        </GridLayout>
+                    </StackLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <Button row="1" text="{{ isRecording ? 'Stop Recording' : 'Record Voice Note' }}"
+                tap="{{ toggleRecording }}"
+                class="bg-red-500 text-white font-bold p-4 m-2 rounded-full" />
+
+        <GridLayout row="2" columns="*, auto" class="bg-white p-2">
+            <TextView col="0" hint="Type a message..." text="{{ messageText }}" 
+                      class="bg-gray-100 rounded-lg p-2" />
+            <Button col="1" text="Send" tap="{{ sendMessage }}" class="btn" />
+        </GridLayout>
+    </GridLayout>
+</Page>

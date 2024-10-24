@@ -1,0 +1,29 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Select Your Dost" class="action-bar" />
+    
+    <GridLayout rows="auto, *, auto">
+        <!-- Header -->
+        <Label row="0" text="Choose your companion for today" class="text-xl text-black text-center p-4" />
+        
+        <!-- Dosts Grid -->
+        <GridLayout row="1" columns="*, *" rows="auto, auto, auto" class="p-4">
+            <Repeater items="{{ dosts }}">
+                <Repeater.itemTemplate>
+                    <GridLayout class="p-2" tap="{{ $parent.onDostSelect }}">
+                        <StackLayout>
+                            <Image src="{{ avatar }}" class="h-32 w-32 rounded-full" />
+                            <Label text="{{ name }}" class="text-center text-black font-bold mt-2" />
+                        </StackLayout>
+                    </GridLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </GridLayout>
+
+        <!-- Bottom Navigation -->
+        <GridLayout row="2" columns="*, *, *" class="bg-purple-100 p-4">
+            <Button col="0" text="Home" tap="{{ onHomeTap }}" class="btn" />
+            <Button col="1" text="Chats" tap="{{ onConversationsTap }}" class="btn" />
+            <Button col="2" text="Profile" tap="{{ onProfileTap }}" class="btn" />
+        </GridLayout>
+    </GridLayout>
+</Page>

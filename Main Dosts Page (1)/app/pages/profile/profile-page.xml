@@ -1,0 +1,48 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="Profile" class="bg-purple-600 text-black" flat="true">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+        <ActionItem tap="{{ onHomeNav }}" ios.position="right" android.position="actionBar">
+            <Label text="Home" class="text-black p-2" />
+        </ActionItem>
+    </ActionBar>
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Profile Header -->
+            <StackLayout class="text-center mb-6">
+                <Image src="{{ profileImage }}" 
+                       class="w-24 h-24 rounded-full mx-auto mb-4" 
+                       stretch="aspectFill" />
+                <Label text="{{ userName }}" 
+                       class="text-2xl font-bold text-black" />
+                <Label text="{{ userEmail }}" 
+                       class="text-black" />
+            </StackLayout>
+
+            <!-- Stats -->
+            <GridLayout columns="*,*" class="text-center mb-6">
+                <StackLayout col="0" class="p-2">
+                    <Label text="{{ totalConversations }}" 
+                           class="text-xl font-bold text-black" />
+                    <Label text="Conversations" class="text-black" />
+                </StackLayout>
+                <StackLayout col="1" class="p-2">
+                    <Label text="{{ totalDosts }}" 
+                           class="text-xl font-bold text-black" />
+                    <Label text="Dosts" class="text-black" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Settings -->
+            <StackLayout class="bg-white rounded-lg p-4">
+                <Label text="Settings" class="text-lg font-bold mb-4 text-black" />
+                <Button text="Edit Profile" tap="{{ onEditProfile }}" 
+                        class="bg-purple-600 text-black rounded-lg p-2 m-1" />
+                <Button text="Notifications" tap="{{ onNotifications }}" 
+                        class="bg-purple-600 text-black rounded-lg p-2 m-1" />
+                <Button text="Privacy" tap="{{ onPrivacy }}" 
+                        class="bg-purple-600 text-black rounded-lg p-2 m-1" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
